@@ -31,13 +31,20 @@ entity Guest {
  Time : Time
 
 }
+entity Notification{
+Id_Notification : Int <<key>>
+Id_Guest : Int <<key>>
+
+}
 relationship was_relate_to {
 
 }
 
+
 Admin -1- was_relate_to
  was_relate_to -N- User
 was_relate_to -N- Guest
+Notification -N- was_relate_to
 
 
 @endchen
