@@ -48,8 +48,12 @@ class LoginAdminHandler{
 }
 class Guest {
   - Guest_id : String
+  - Date : Date
+  - Time : Time 
+  - Guest_pic : BOLB
 
   +qr_codescan()
+  +register_Guest_Data()
 
 }
 class Check_Permision_ForData{

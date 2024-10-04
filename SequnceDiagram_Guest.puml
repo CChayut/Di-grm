@@ -1,26 +1,39 @@
 @startuml
 activate guest
+
  guest -> system : Open Application ()
+
  activate system 
  system --> guest : Show Application()
-
  guest -> Qrcodescaner : Press qrcode scanbutton()
+
  activate Qrcodescaner
- Qrcodescaner -> Data : Request Data User()
- deactivate Qrcodescaner
+
+ Qrcodescaner -> RegisterData : Register Data ()
+ activate RegisterData
  activate Data
- Data --> guest : Show Data User()
+ RegisterData -> Data : Store Data()
+ Data -> Data : Store Data()
 
 
- activate GoogleMap
- Data -> GoogleMap : Route()
- GoogleMap -> GoogleMap : find user location()
+ deactivate RegisterData
+ activate admin
+ Qrcodescaner --> guest : Show waiting screen()
+ Qrcodescaner -> admin : Request From Guest()
+ admin --> guest : access grant()
+ deactivate admin
+
+
+ deactivate Qrcodescaner
+ deactivate RegisterData
+ guest -> Data : Get user Data()
+ Data --> guest : Display user Data()
  deactivate Data
- GoogleMap --> guest : Display RealTimelocation()
- deactivate GoogleMap
-
-
-
+ activate map
+ deactivate map
+ guest -> map : Route map()
+ map --> guest : Show map with Route system()
  deactivate system
+
 
 @enduml

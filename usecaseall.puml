@@ -35,8 +35,8 @@ Admin -up- Login
 Admin -- EditProfile : <<include>>
 Admin -- Notifications : <<include>>
 Admin -- ManageUsers : <<include>> 
+Admin -- ViewUserData
 User -down- Register
-User -- ViewUserData
 Register -- Login : <<include>> 
 Login .> Logout : <<include>>
 
